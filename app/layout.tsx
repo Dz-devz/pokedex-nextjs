@@ -1,13 +1,18 @@
 import { ModeToggle } from "@/components/dark-mode";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../public/assets/logo.png";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "Dz.dev Nostalgic PokeDex",
@@ -21,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${poppins.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <main className="flex min-h-screen flex-col items-center p-24">
             <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">

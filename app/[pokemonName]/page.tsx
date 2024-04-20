@@ -22,15 +22,22 @@ export default async function PokemonPage({
           name={pokemonName}
         />
       </div>
-      <h3>Weight: {pokemonObject.weight}</h3>
+      <h3 className="text-2xl text-bold mb-5">
+        Weight: {pokemonObject.weight}
+      </h3>
       <div className="flex-col">
         {pokemonObject.stats.map((statsObject: any) => {
           const statName = statsObject.stat.name;
           const statValue = statsObject.base_stat;
+          const statNameUpperCase =
+            statName.charAt(0).toUpperCase() + pokemonName.slice(1);
           return (
-            <div className="flex items-stretch w-[500px]" key={statName}>
-              <h3 className="p-3 w-2/4">
-                {statName}: {statValue}
+            <div
+              className="flex items-stretch w-[500px]"
+              key={statNameUpperCase}
+            >
+              <h3 className="p-3 w-2/4 text-[20px] text-bold">
+                {statNameUpperCase}: {statValue}
               </h3>
               <Progress className="w-2/4 m-auto" value={statValue} />
             </div>
