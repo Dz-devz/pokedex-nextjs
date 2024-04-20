@@ -29,17 +29,23 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
             type="text"
             value={searchText}
             id="pokemonName"
-            placeholder="Charizard, Bayleaf, etc."
+            placeholder="Pikachu, Pichu, Raichu, etc."
             onChange={(e) => setSearchText(e.target.value)}
           />
         </div>
         <h3 className="text-3xl pt-12 pb-6 text-center">Pokemon Collection</h3>
       </div>
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
+      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-5 lg:text-left">
         {filteredPokemonList.map((pokemon: any) => {
-          return <PokemonCard key={pokemon.id} name={pokemon.name} />;
+          return (
+            <div
+              key={pokemon.id}
+              className={`flex transition transform duration-[250ms] hover:translate-y-3`}
+            >
+              <PokemonCard key={pokemon.id} name={pokemon.name} />
+            </div>
+          );
         })}
-        <PokemonCard name="Pikachu" />
       </div>
     </>
   );
