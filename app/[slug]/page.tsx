@@ -5,21 +5,21 @@ import { getPokemon } from "@/lib/pokemonlistApi";
 export default async function PokemonPage({
   params,
 }: {
-  params: { pokemonName: string };
+  params: { slug: string };
 }) {
-  const { pokemonName } = params;
+  const { slug } = params;
 
-  const pokemonObject = await getPokemon(pokemonName);
+  const pokemonObject = await getPokemon(slug);
 
   return (
     <>
       <h1 className="text-4xl text-bold pt-4">
-        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+        {slug.charAt(0).toUpperCase() + slug.slice(1)}
       </h1>
       <div className="m-4 relative w-80 h-80">
         <PokemonImage
           image={pokemonObject.sprites.other["official-artwork"].front_default}
-          name={pokemonName}
+          name={slug}
         />
       </div>
       <h3 className="text-2xl text-bold mb-5">
@@ -30,7 +30,7 @@ export default async function PokemonPage({
           const statName = statsObject.stat.name;
           const statValue = statsObject.base_stat;
           const statNameUpperCase =
-            statName.charAt(0).toUpperCase() + pokemonName.slice(1);
+            statName.charAt(0).toUpperCase() + slug.slice(1);
           return (
             <div
               className="flex items-stretch w-[500px]"
