@@ -3,6 +3,8 @@ import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { PokemonCard } from "./pokemon-card";
 import { Input } from "./ui/input";
+import PokemonImage from "./pokemon-image";
+import ThumbnailImage from "./thumbnail-image";
 
 interface PokemonGridProps {
   pokemonList: any;
@@ -44,6 +46,8 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
               className={`flex transition transform duration-[250ms] hover:translate-y-3`}
             >
               <PokemonCard key={pokemon.id} name={pokemon.name} />
+              <ThumbnailImage name={pokemon.name} />
+              {/* <PokemonImage key={pokemon.id} name={pokemon.name} image={pokemon.sprites.front_default} /> */}
             </div>
           );
         })}
