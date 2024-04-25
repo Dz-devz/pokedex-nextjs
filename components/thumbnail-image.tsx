@@ -1,4 +1,4 @@
-import { getPokemonThumbnail } from "@/lib/pokemonlistApi";
+import { getPokemon } from "@/lib/pokemonlistApi";
 import PokemonImage from "./pokemon-image";
 
 interface PokemonCardProps {
@@ -6,7 +6,7 @@ interface PokemonCardProps {
 }
 
 export default async function ThumbnailImage({ name }: PokemonCardProps) {
-  const pokemonObject = await getPokemonThumbnail();
+  const pokemonObject = await getPokemon(name);
 
   return (
     <>
