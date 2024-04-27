@@ -8,7 +8,7 @@ interface PokemonGridProps {
   pokemonList: any;
 }
 
-export function PokemonGrid({ pokemonList }: PokemonGridProps) {
+export function PokemonGrid({ pokemonList}: PokemonGridProps) {
   const [searchText, setSearchText] = useState("");
 
   const searchFilter = (pokemonList: any) => {
