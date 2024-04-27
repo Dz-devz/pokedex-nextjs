@@ -14,6 +14,7 @@ export default function PokemonImage({
       alt={"Picture of " + name}
       priority
       fill
+      sizes="(max-width: 768px)"
       style={{ objectFit: "contain" }}
       className="transition-opacity opacity-0 duration-[2s]"
       onLoadingComplete={(image) => image.classList.remove("opacity-0")}
