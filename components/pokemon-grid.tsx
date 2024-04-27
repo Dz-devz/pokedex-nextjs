@@ -8,7 +8,7 @@ interface PokemonGridProps {
   pokemonList: any;
 }
 
-export function PokemonGrid({ pokemonList}: PokemonGridProps) {
+export function PokemonGrid({ pokemonList }: PokemonGridProps) {
   const [searchText, setSearchText] = useState("");
 
   const searchFilter = (pokemonList: any) => {
@@ -31,7 +31,9 @@ export function PokemonGrid({ pokemonList}: PokemonGridProps) {
             value={searchText}
             id="pokemonName"
             placeholder="Pikachu, Pichu, Raichu, etc."
-            onChange={(e) => setSearchText(e.target.value)}
+            onChange={(e: { target: { value: any } }) =>
+              setSearchText(e.target.value)
+            }
           />
         </div>
         <h3 className="text-3xl pt-12 pb-6 text-center">
