@@ -30,7 +30,7 @@ export default async function PokemonPage({
           const statName = statsObject.stat.name;
           const statValue = statsObject.base_stat;
           const statNameUpperCase =
-            statName.charAt(0).toUpperCase() + slug.slice(1);
+            statName.charAt(0).toUpperCase() + statName.slice(1);
           return (
             <div
               className="flex items-stretch w-[500px]"
