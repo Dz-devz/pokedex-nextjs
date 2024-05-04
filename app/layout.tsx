@@ -2,6 +2,7 @@ import { ModeToggle } from "@/components/dark-mode";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../public/assets/logo.png";
@@ -26,6 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={`${poppins.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <main className="flex min-h-screen flex-col items-center p-24">
