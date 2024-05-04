@@ -1,5 +1,6 @@
 "use client";
 import { Label } from "@radix-ui/react-label";
+import Link from "next/link";
 import { useState } from "react";
 import { PokemonCard } from "./pokemon-card";
 import PokemonThumbnail from "./thumbnail";
@@ -50,7 +51,9 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
             >
               <PokemonCard key={pokemon.index} name={pokemon.name} />
               <div className="transition transform duration-[250ms] hover:scale-110 flex flex-col mt-[4rem] ml-12 absolute opacity-0 hover:opacity-100">
-                <PokemonThumbnail index={index} />
+                <Link href={pokemon.name}>
+                  <PokemonThumbnail index={index} />
+                </Link>
               </div>
             </div>
           );
