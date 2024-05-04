@@ -2,6 +2,7 @@
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 import { PokemonCard } from "./pokemon-card";
+import PokemonThumbnail from "./thumbnail";
 import { Input } from "./ui/input";
 
 interface PokemonGridProps {
@@ -41,13 +42,16 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         </h3>
       </div>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-5 lg:text-left">
-        {filteredPokemonList.map((pokemon: any) => {
+        {filteredPokemonList.map((pokemon: any, index: any) => {
           return (
             <div
               key={pokemon.name}
-              className={`flex transition transform duration-[250ms] hover:scale-110`}
+              className={`flex transition transform duration-[250ms] hover:scale-110 relative`}
             >
-              <PokemonCard key={pokemon.name} name={pokemon.name} />
+              <PokemonCard key={pokemon.index} name={pokemon.name} />
+              <div className="transition transform duration-[250ms] hover:scale-110 flex flex-col mt-[4rem] ml-12 absolute opacity-0 hover:opacity-100">
+                <PokemonThumbnail index={index} />
+              </div>
             </div>
           );
         })}
