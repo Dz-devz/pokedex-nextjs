@@ -1,6 +1,7 @@
 import PokemonImage from "@/components/pokemon-image";
 import { Progress } from "@/components/ui/progress";
 import { getPokemon } from "@/lib/pokemonlistApi";
+import { notFound } from "next/navigation";
 
 export default async function PokemonPage({
   params,
@@ -10,6 +11,10 @@ export default async function PokemonPage({
   const { slug } = params;
 
   const pokemonObject = await getPokemon(slug);
+
+  if (!pokemonObject) {
+    notFound();
+  }
 
   return (
     <>
