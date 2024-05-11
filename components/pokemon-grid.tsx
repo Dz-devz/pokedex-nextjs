@@ -43,7 +43,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         </h3>
       </div>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-5 lg:text-left">
-        {filteredPokemonList.map((pokemon: any, index: any) => {
+        {filteredPokemonList.map((pokemon: any, id: number) => {
           return (
             <div
               key={pokemon.name}
@@ -52,7 +52,11 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
               <PokemonCard key={pokemon.index} name={pokemon.name} />
               <div className="transition transform duration-[250ms] hover:scale-110 flex flex-col mt-[4rem] ml-12 absolute opacity-0 hover:opacity-100">
                 <Link href={pokemon.name}>
-                  <PokemonThumbnail index={index} />
+                  <PokemonThumbnail
+                    index={pokemonList.findIndex(
+                      (pokeList: any) => pokeList.id === pokemon.id
+                    )}
+                  />
                 </Link>
               </div>
             </div>
