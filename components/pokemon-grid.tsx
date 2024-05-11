@@ -54,7 +54,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
                 <Link href={pokemon.name}>
                   <PokemonThumbnail
                     index={pokemonList.findIndex(
-                      (pokeList: any) => pokeList.id === pokemon.id
+                      (pokeList: any) => pokeList.name === pokemon.name
                     )}
                   />
                 </Link>
