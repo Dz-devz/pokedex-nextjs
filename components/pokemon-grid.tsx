@@ -3,17 +3,22 @@ import { Label } from "@radix-ui/react-label";
 import Link from "next/link";
 import { useState } from "react";
 import { PokemonCard } from "./pokemon-card";
-import PokemonThumbnail from "./thumbnail";
+import PokemonThumbnail from "./pokemon-thumbnail";
 import { Input } from "./ui/input";
 
 interface PokemonGridProps {
-  pokemonList: any;
+  name: string;
+  id: number;
 }
 
-export function PokemonGrid({ pokemonList }: PokemonGridProps) {
-  const [searchText, setSearchText] = useState("");
+interface Props {
+  pokemonList: PokemonGridProps[];
+}
 
-  const searchFilter = (pokemonList: any) => {
+export function PokemonGrid({ pokemonList }: Props) {
+  const [searchText, setSearchText] = useState<string>("");
+
+  const searchFilter = (pokemonList: PokemonGridProps[]) => {
     return pokemonList.filter((pokemon: any) =>
       pokemon.name.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -33,7 +38,7 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
             value={searchText}
             id="pokemonName"
             placeholder="Pikachu, Pichu, Raichu, etc."
-            onChange={(e: { target: { value: any } }) =>
+            onChange={(e: { target: { value: string } }) =>
               setSearchText(e.target.value)
             }
           />
@@ -43,18 +48,18 @@ export function PokemonGrid({ pokemonList }: PokemonGridProps) {
         </h3>
       </div>
       <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-5 lg:text-left">
-        {filteredPokemonList.map((pokemon: any, id: number) => {
+        {filteredPokemonList.map((pokemon, id) => {
           return (
             <div
               key={pokemon.name}
               className={`flex transition transform duration-[250ms] hover:scale-110 relative`}
             >
-              <PokemonCard key={pokemon.index} name={pokemon.name} />
+              <PokemonCard key={pokemon.id} name={pokemon.name} />
               <div className="transition transform duration-[250ms] hover:scale-110 flex flex-col mt-[4rem] ml-12 absolute opacity-0 hover:opacity-100">
                 <Link href={pokemon.name}>
                   <PokemonThumbnail
                     index={pokemonList.findIndex(
-                      (pokeList: any) => pokeList.name === pokemon.name
+                      (pokeList) => pokeList.name === pokemon.name
                     )}
                   />
                 </Link>
