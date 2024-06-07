@@ -7,8 +7,8 @@ import PokemonThumbnail from "./pokemon-thumbnail";
 import { Input } from "./ui/input";
 
 interface PokemonGridProps {
-  name: string;
   id: number;
+  name: string;
 }
 
 interface Props {
@@ -19,7 +19,7 @@ export function PokemonGrid({ pokemonList }: Props) {
   const [searchText, setSearchText] = useState<string>("");
 
   const searchFilter = (pokemonList: PokemonGridProps[]) => {
-    return pokemonList.filter((pokemon: any) =>
+    return pokemonList.filter((pokemon: PokemonGridProps) =>
       pokemon.name.toLowerCase().includes(searchText.toLowerCase())
     );
   };
