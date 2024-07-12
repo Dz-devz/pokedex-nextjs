@@ -14,7 +14,7 @@ export async function getPokemon(name: string) {
   return data;
 }
 
-export async function getPokemonThumbnail(index: any) {
+export async function getPokemonThumbnail(index: number) {
   const response = await fetch(fetchPokemon + "pokemon/" + index);
   const data = await response.json();
   return data;
