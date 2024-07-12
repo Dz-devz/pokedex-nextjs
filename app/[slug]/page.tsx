@@ -3,6 +3,11 @@ import { ProgressDemo } from "@/components/progress-bar";
 import { getPokemon } from "@/lib/pokemonlistApi";
 import { notFound } from "next/navigation";
 
+interface StatsObjectProps {
+  stat: { name: string };
+  base_stat: number;
+}
+
 export default async function PokemonPage({
   params,
 }: {
@@ -31,25 +36,23 @@ export default async function PokemonPage({
         Weight: {pokemonObject.weight}
       </h3>
       <div className="flex-col">
-        {pokemonObject.stats.map(
-          (statsObject: { stat: { name: string }; base_stat: number }) => {
-            const statName = statsObject.stat.name;
-            const statValue = statsObject.base_stat;
-            const statNameUpperCase =
-              statName.charAt(0).toUpperCase() + statName.slice(1);
-            return (
-              <div
-                className="flex items-stretch w-[500px]"
-                key={statNameUpperCase}
-              >
-                <h3 className="p-3 w-2/4 text-[20px] text-bold">
-                  {statNameUpperCase}: {statValue}
-                </h3>
-                <ProgressDemo value={statValue} />
-              </div>
-            );
-          }
-        )}
+        {pokemonObject.stats.map((statsObject: StatsObjectProps) => {
+          const statName = statsObject.stat.name;
+          const statValue = statsObject.base_stat;
+          const statNameUpperCase =
+            statName.charAt(0).toUpperCase() + statName.slice(1);
+          return (
+            <div
+              className="flex items-stretch w-[500px]"
+              key={statNameUpperCase}
+            >
+              <h3 className="p-3 w-2/4 text-[20px] text-bold">
+                {statNameUpperCase}: {statValue}
+              </h3>
+              <ProgressDemo value={statValue} />
+            </div>
+          );
+        })}
       </div>
     </>
   );
