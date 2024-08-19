@@ -29,9 +29,9 @@ export function PokemonGrid({ pokemonList }: Props) {
   return (
     <>
       <div>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
+        <div className="grid w-full max-w-sm items-center text-center gap-1.5">
           <Label className=" text-4xl mb-5" htmlFor="pokemonName">
-            Pokemon <span className="text-red-700">Finder</span>
+            Pokemon <span className="text-red-700">Tracker</span>
           </Label>
           <Input
             type="text"
